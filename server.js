@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
 // RESTAURANT INDEX ROUTE
 app.get("/restaurant", async (req, res) => {
   try {
-    // send all people
+    // send all restaurants
     res.json(await Restaurant.find({}));
   } catch (error) {
     //send error
@@ -71,7 +71,7 @@ app.get("/restaurant", async (req, res) => {
 // RESTAURANT CREATE ROUTE
 app.post("/restaurant", async (req, res) => {
   try {
-    // send all people
+    // send all restaurants
     res.json(await Restaurant.create(req.body));
   } catch (error) {
     //send error
@@ -92,16 +92,27 @@ app.put("/restaurant/:id", async (req, res) => {
   }
 });
 
-// PEOPLE Delete ROUTE
+// Restaurant Delete ROUTE
 app.delete("/restaurant/:id", async (req, res) => {
   try {
-    // send all people
+    // send all restaurants
     res.json(await Restaurant.findByIdAndRemove(req.params.id));
   } catch (error) {
     //send error
     res.status(400).json(error);
   }
 });
+
+// Restaurant INDEX ROUTE
+app.get("/RESTAURANT/:id", async (req, res) => {
+    try {
+      // send all restaurants
+      res.json(await Restaurant.findById(req.params.id));
+    } catch (error) {
+      //send error
+      res.status(400).json(error);
+    }
+  });
 
 
 
