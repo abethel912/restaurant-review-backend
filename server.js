@@ -96,7 +96,7 @@ app.put("/restaurant/:id", async (req, res) => {
 app.delete("/restaurant/:id", async (req, res) => {
   try {
     // send all restaurants
-    res.json(await Restaurant.findByIdAndRemove(req.params.id));
+    res.json(await Restaurant.findByIdAndDelete(req.params.id));
   } catch (error) {
     //send error
     res.status(400).json(error);
