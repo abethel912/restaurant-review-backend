@@ -11,6 +11,10 @@ const express = require('express')
 const app = express()
 // import mongoose
 const mongoose = require("mongoose");
+// import middlware
+const cors = require("cors");
+const morgan = require("morgan");
+
 
 // DATABASE CONNECTION
 
@@ -25,6 +29,25 @@ mongoose.connection
   .on("open", () => console.log("Your are connected to mongoose"))
   .on("close", () => console.log("Your are disconnected from mongoose"))
   .on("error", (error) => console.log(error));
+
+  ///////////////////////////////
+// MODELS
+////////////////////////////////
+const RestaurantSchema = new mongoose.Schema({
+  name: String,
+  image: String,
+  cuisine: String,
+  address: String
+});
+
+const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+
+///////////////////////////////
+// MiddleWare
+////////////////////////////////
+app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(morgan("dev")); // logging
+app.use(express.json()); // parse json bodies
 
 
 // ROUTES
