@@ -33,11 +33,20 @@ mongoose.connection
   ///////////////////////////////
 // MODELS
 ////////////////////////////////
+const ReviewSchema = new mongoose.Schema({
+  rating: Number,
+  review: String
+},
+  { timestamps: true }
+)
+
+const Review = mongoose.model("Review", ReviewSchema)
+
 const RestaurantSchema = new mongoose.Schema({
   name: String,
   image: String,
-  cuisine: String,
-  address: String
+  address: String,
+  review: [Review]
 });
 
 const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
