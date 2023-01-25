@@ -49,7 +49,7 @@ router.delete("/:id", async (req, res) => {
 });
 
   // Restaurant Show ROUTE
-app.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         // send all restaurants
         res.json(await Restaurant.findById(req.params.id));
