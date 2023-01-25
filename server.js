@@ -15,7 +15,7 @@ const restaurantRouter = require('./controllers/restaurant.js')
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/restaurant'. restaurantRouter)
+app.use('/restaurant', restaurantRouter)
 
 // ROUTES
 
