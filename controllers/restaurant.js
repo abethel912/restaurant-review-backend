@@ -3,7 +3,7 @@ const Restaurant = require('../model/restaurant.js');
 
 
 // RESTAURANT INDEX ROUTE
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
       // send all restaurants
     res.json(await Restaurant.find({}));
@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
 });
 
   // RESTAURANT CREATE ROUTE
-app.post("/", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
       // send all restaurants
     res.json(await Restaurant.create(req.body));
@@ -25,7 +25,7 @@ app.post("/", async (req, res) => {
 });
 
   // PEOPLE Update ROUTE
-app.put("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
       // send all restaurants
     res.json(
@@ -38,7 +38,7 @@ app.put("/:id", async (req, res) => {
 });
 
   // Restaurant Delete ROUTE
-app.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
       // send all restaurants
     res.json(await Restaurant.findByIdAndDelete(req.params.id));
