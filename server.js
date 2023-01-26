@@ -10,12 +10,14 @@ const cors = require("cors");
 const morgan = require("morgan");
 const PORT = process.env.PORT ?? 3333
 const restaurantRouter = require('./controllers/restaurant.js')
+const authRouter = require('./controllers/user')
 
 // Middleware
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/restaurant', restaurantRouter)
+app.use('/auth', authRouter)
 
 // ROUTES
 
