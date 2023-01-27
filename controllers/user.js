@@ -3,8 +3,7 @@ const bcrypt = require('bcryptjs')
 const {Router} = require("express")
 const router = Router()
 const jwt = require('jsonwebtoken')
-const { useResolvedPath } = require('react-router-dom')
-const secret = process.env.secret
+const secret = process.env.SECRET
 const User = require('../model/user')
 
 router.get('/', (req,res) => {
@@ -22,7 +21,7 @@ router.post("/signup", async(req,res)=>{
     }
 })
 
-router.post('/login', async(req,res)=>{
+router.post('/login', async(req,res) => {
     try{
         const {username, password} = req.body
         const user = await User.findOne({username})

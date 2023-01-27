@@ -13,11 +13,10 @@ const restaurantRouter = require('./controllers/restaurant.js')
 const authRouter = require('./controllers/user')
 
 // Middleware
-app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/restaurant', restaurantRouter)
-app.use('/auth', authRouter)
+app.use(cors());
+
 
 // ROUTES
 
@@ -25,6 +24,11 @@ app.use('/auth', authRouter)
 app.get('/', (req, res) => {
   res.send('hello world')
 })
+
+
+app.use('/restaurant', restaurantRouter)
+app.use('/auth', authRouter)
+
 
 // LISTENER
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))
