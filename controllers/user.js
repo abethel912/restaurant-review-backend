@@ -7,12 +7,16 @@ const jwt = require('jsonwebtoken')
 const secret = process.env.SECRET
 const User = require('../model/user')
 const auth = require('../auth/index')
+const { route } = require('./restaurant')
 
 
 router.get('/', (req,res) => {
     res.json({message: "WELCOME TO AUTH ROUTER"})
 })
 
+router.get('/currentuser', auth, async (req,res) =>{
+    res.json(req.payload)
+})
 
 router.post("/signup", async(req,res)=>{
     try{
