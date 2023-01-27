@@ -3,12 +3,16 @@ const bcrypt = require('bcryptjs')
 const {Router} = require("express")
 const router = Router()
 const jwt = require('jsonwebtoken')
+//MAKE SURE CAPS MATCH ENV!
 const secret = process.env.SECRET
 const User = require('../model/user')
+const auth = require('../auth/index')
+
 
 router.get('/', (req,res) => {
     res.json({message: "WELCOME TO AUTH ROUTER"})
 })
+
 
 router.post("/signup", async(req,res)=>{
     try{

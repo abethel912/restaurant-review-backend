@@ -12,6 +12,7 @@ const PORT = process.env.PORT ?? 3333
 const restaurantRouter = require('./controllers/restaurant.js')
 const authRouter = require('./controllers/user')
 
+
 // Middleware
 app.use(morgan('dev'));
 app.use(express.json());
